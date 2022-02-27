@@ -11,7 +11,7 @@
         android:theme="@style/Theme.MasterQuizApp">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="adjustResize"
             android:exported="true">
