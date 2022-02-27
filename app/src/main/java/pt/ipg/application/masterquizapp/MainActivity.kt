@@ -36,10 +36,11 @@ class MainActivity : AppCompatActivity() {
             if (etName.text.toString().isEmpty()){
                 Toast.makeText(this@MainActivity, "Please enter your name",
                 Toast.LENGTH_SHORT).show()
+            }else {
+                val intent = Intent(this@MainActivity, QuestionActivity::class.java)
+                startActivity(intent)
+                finish()
             }
-            val intent = Intent(this@MainActivity, QuestionActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
 
