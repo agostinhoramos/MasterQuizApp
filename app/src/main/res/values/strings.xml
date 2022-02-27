@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Master Quiz App</string>
-    <string name="subtitle">Ukraine WAR 2022</string>
+    <string name="subtitle">Conflict in Ukraine</string>
     <string name="start_btm">Start</string>
-    <string name="name" >Name</string>
     <string name="please_enter_your_name">Please enter your name</string>
+    <string name="name">Name</string>
 </resources>

@@ -69,6 +69,7 @@
                     android:textColorHint="#7A8089"
                     />
             </com.google.android.material.textfield.TextInputLayout>
+
             <Button
                 android:id="@+id/btn_start"
                 android:layout_width="match_parent"
