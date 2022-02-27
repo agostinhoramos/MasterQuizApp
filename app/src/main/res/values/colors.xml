@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Ukraine Color -->
+    <color name="uk_blue_1" >#FF3700B3</color>
+    <color name="uk_yellow_1" >#FFEB3B</color>
+
+    <!-- Basic Color -->
     <color name="colorPrimary" >#FF6200EE</color>
     <color name="colorPrimaryDark" >#FF3700B3</color>
     <color name="colorAccent" >#FF03DAC5</color>
 
+    <!-- Default color -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
