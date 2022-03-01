@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MasterQuizApp">
         <activity
+            android:name=".ListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FinalResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".QuestionActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
