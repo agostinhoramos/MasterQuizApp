@@ -1,70 +1,136 @@
 package pt.ipg.application.masterquizapp
 
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
-    private var mCurrentPosition: Int = 1
+    private var mCurrentPosition: Int = 0
     private var mQuestionList: ArrayList<Question>? = null
+    private var mQuestionSize: Int = 4
     private var mSelectedOptionPosition: Int = 0
+    private var progressBar: ProgressBar? = null
+
+    //
+    private var btnSubmit: Button? = null
+    private var tvOptionOne: TextView? = null
+    private var tvOptionTwo: TextView? = null
+    private var tvOptionThree: TextView? = null
+    private var tvOptionFour: TextView? = null
+    private var tvQuestion: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
 
+        btnSubmit = findViewById(R.id.btn_submit)
+        tvOptionOne = findViewById(R.id.tv_option_one)
+        tvOptionTwo = findViewById(R.id.tv_option_two)
+        tvOptionThree = findViewById(R.id.tv_option_three)
+        tvOptionFour = findViewById(R.id.tv_option_four)
+        tvQuestion = findViewById(R.id.tv_question)
+
         // Enable on click event
-        findViewById<TextView>(R.id.tv_option_one)
-            .setOnClickListener(this)
-        findViewById<TextView>(R.id.tv_option_two)
-            .setOnClickListener(this)
-        findViewById<TextView>(R.id.tv_option_three)
-            .setOnClickListener(this)
-        findViewById<TextView>(R.id.tv_option_four)
-            .setOnClickListener(this)
+        tvOptionOne?.setOnClickListener(this)
+        tvOptionTwo?.setOnClickListener(this)
+        tvOptionThree?.setOnClickListener(this)
+        tvOptionFour?.setOnClickListener(this)
+        btnSubmit?.setOnClickListener(this)
 
+        progressBar = findViewById(R.id.progressBar)
+
+        progressBar?.max = mQuestionSize
         mQuestionList = Constants.getQuestions()
+        nextQuestion()
 
-        var currentPosition = 1
-        var progressBar = findViewById<TextView>(R.id.tv_progress)
-        progressBar.text = "$currentPosition / 4"
-
-        setQuestion()
+        // style option
+        defaultOptionsView()
     }
 
-    private fun setQuestion() {
+    private fun nextQuestion() {
+        mCurrentPosition += 1
 
-        val question =
-            mQuestionList!![mCurrentPosition - 1]
+        if( mCurrentPosition <= mQuestionSize ) {
+            val question =
+                mQuestionList!![mCurrentPosition - 1]
 
-        findViewById<TextView>(R.id.tv_question).text = question.question
-        findViewById<TextView>(R.id.tv_option_one).text = question.optionOne
-        findViewById<TextView>(R.id.tv_option_two).text = question.optionTwo
-        findViewById<TextView>(R.id.tv_option_three).text = question.optionThree
-        findViewById<TextView>(R.id.tv_option_four).text = question.optionFour
+            progressBar?.progress = mCurrentPosition
+            findViewById<TextView>(R.id.tv_progress).text = "${mCurrentPosition} / ${progressBar?.getMax()}"
+
+            tvQuestion?.text = question.question
+            tvOptionOne?.text = question.optionOne
+            tvOptionTwo?.text = question.optionTwo
+            tvOptionThree?.text = question.optionThree
+            tvOptionFour?.text = question.optionFour
+
+        }else{
+            // GO TO NEXT ACTIVITY
+        }
+
+        if (mCurrentPosition == mQuestionSize){
+            btnSubmit?.text = "FINISH"
+        }else{
+            btnSubmit?.text = "SUBMIT"
+        }
     }
 
     // set click event
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.tv_question -> {
-                print("You type Question")
-            }
             R.id.tv_option_one -> {
-                print("You type 1")
+                selectedOptionView(findViewById(R.id.tv_option_one), 1)
             }
             R.id.tv_option_two -> {
-                print("You type 2")
+                selectedOptionView(findViewById(R.id.tv_option_two), 2)
             }
             R.id.tv_option_three -> {
-                print("You type 3")
+                selectedOptionView(findViewById(R.id.tv_option_three), 3)
             }
             R.id.tv_option_four -> {
-                print("You type 4")
+                selectedOptionView(findViewById(R.id.tv_option_four), 4)
             }
+            R.id.btn_submit -> {
+                nextQuestion()
+                defaultOptionsView()
+            }
+        }
+    }
+
+    private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
+        defaultOptionsView()
+        mSelectedOptionPosition = selectedOptionNum
+        tv.setTextColor(
+            Color.parseColor("#363A43")
+        )
+        tv.setTypeface(tv.typeface, Typeface.BOLD)
+        tv.background = ContextCompat.getDrawable(
+            this@QuestionActivity,
+            R.drawable.selected_option_border_bg
+        )
+    }
+
+    private fun defaultOptionsView() {
+        mSelectedOptionPosition = 0
+        val options = ArrayList<TextView>()
+        options.add(0, findViewById(R.id.tv_option_one))
+        options.add(1, findViewById(R.id.tv_option_two))
+        options.add(2, findViewById(R.id.tv_option_three))
+        options.add(3, findViewById(R.id.tv_option_four))
+        for (option in options) {
+            option.setTextColor(Color.parseColor("#7A8089"))
+            option.typeface = Typeface.DEFAULT
+            option.background = ContextCompat.getDrawable(
+                this@QuestionActivity,
+                R.drawable.default_option_border_bg
+            )
         }
     }
 }
