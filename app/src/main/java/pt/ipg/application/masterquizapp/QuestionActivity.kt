@@ -73,6 +73,9 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
         }else{
             // GO TO NEXT ACTIVITY
+            val intent = Intent(this@QuestionActivity, FinalResultActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         if (mCurrentPosition == mQuestionSize){

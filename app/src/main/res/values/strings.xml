@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Master Quiz App</string>
     <string name="subtitle">Conflict in Ukraine Quiz</string>
-    <string name="start_btm">Start</string>
+    <string name="start_btn">Start</string>
+    <string name="finish_btn">Finish</string>
     <string name="please_enter_your_name">Please enter your name</string>
     <string name="name">Name</string>
 </resources>
