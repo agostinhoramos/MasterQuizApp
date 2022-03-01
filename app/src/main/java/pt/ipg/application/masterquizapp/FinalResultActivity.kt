@@ -29,7 +29,7 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
                 finish()
             }
             R.id.btn_quit -> {
-                val intent = Intent(this@FinalResultActivity, MainActivity::class.java)
+                val intent = Intent(this@FinalResultActivity, ListActivity::class.java)
                 startActivity(intent)
                 finish()
             }
