@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
     private var btnReplay: Button? = null
@@ -19,6 +22,7 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
 
         btnReplay?.setOnClickListener(this)
         btnQuit?.setOnClickListener(this)
+
     }
 
     override fun onClick(v: View?) {
