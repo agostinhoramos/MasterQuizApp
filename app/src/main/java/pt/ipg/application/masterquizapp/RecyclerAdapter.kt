@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
-    private var titles = arrayOf("C 1", "C 2", "C 3", "C 4", "C 5")
-    private var descs = arrayOf("D 1", "D 2", "D 3", "D 4", "D 5")
-    private var images = arrayOf(R.drawable.ic_you_lose, R.drawable.ic_you_lose, R.drawable.ic_you_lose, R.drawable.ic_you_lose, R.drawable.ic_you_lose)
+    private var titles = arrayOf("Luis Felipe")
+    private var descs = arrayOf("Final score: 12")
+    private var images = arrayOf(R.drawable.ic_you_lose)
 
     override fun getItemCount(): Int {
         return titles.size
