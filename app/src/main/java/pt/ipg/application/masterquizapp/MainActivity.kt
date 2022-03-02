@@ -56,10 +56,27 @@ class MainActivity : AppCompatActivity() {
         }
 
         createNotificationChannel()
-        //setNotification()
+
+        SocketHandler.setSocket()
+        val mSocket = SocketHandler.getSocket()
+        mSocket.connect()
+
+        // action
+        mSocket.emit("counter")
+
+        mSocket.on("counter"){ args ->
+            if (args[0] != null){
+                val counter = args[0] as Int
+                runOnUiThread{
+                    val name = counter.toString()
+                    setNotification(name)
+                }
+            }
+        }
+
     }
 
-    private fun setNotification(){
+    private fun setNotification(name: String){
         val intent = Intent(this, ListActivity::class.java)
         val pendingIntent = TaskStackBuilder.create(this).run {
             addNextIntentWithParentStack(intent)
@@ -68,7 +85,7 @@ class MainActivity : AppCompatActivity() {
 
         var notification = NotificationCompat.Builder(this, CHANEL_ID)
             .setContentTitle("Top Ranking")
-            .setContentText("New ranking result")
+            .setContentText("New ranking result from $name")
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
