@@ -101,8 +101,12 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                 selectedOptionView(findViewById(R.id.tv_option_four), 4)
             }
             R.id.btn_submit -> {
-                nextQuestion()
-                defaultOptionsView()
+                if( mSelectedOptionPosition != 0 ){
+                    nextQuestion()
+                    defaultOptionsView()
+                }else{
+                    Toast.makeText(this, "Please, select one option", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
