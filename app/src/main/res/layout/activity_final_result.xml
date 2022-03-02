@@ -27,30 +27,33 @@ tools:context=".FinalResultActivity">
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/tv_player_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Hey, Agostinho!"
+            tools:text="Welcome message"
             android:textColor="#363A43"
             android:textSize="28sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tv_game_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="You LOSE"
+            tools:text="Status of Game"
             android:textColor="#757575"
             android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/iv_trophy"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:layout_marginHorizontal="100dp"
             android:layout_gravity="center"
+            tools:src="@drawable/ukraine_flag"
             android:contentDescription="image"
-            android:src="@drawable/ic_you_lose" />
+            />
 
         <TextView
             android:id="@+id/tv_final_score"
@@ -59,7 +62,7 @@ tools:context=".FinalResultActivity">
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"
             android:gravity="center"
-            android:text="Final Score: 0"
+            tools:text="Display result"
             android:textColor="#363A43"
             android:textSize="28sp"
             android:textStyle="bold" />

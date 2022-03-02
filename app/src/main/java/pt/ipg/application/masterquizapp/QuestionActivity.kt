@@ -29,6 +29,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private var tvOptionFour: TextView? = null
     private var tvQuestion: TextView? = null
 
+    private var numCorrect: Int = 0
     private var score: Float = 0.0F
     private var prevCorrectAnswer: Int = 0
 
@@ -64,8 +65,9 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private fun nextQuestion() {
 
         // Logic - Check if Answer is correct
-        if (prevCorrectAnswer != 0 && prevCorrectAnswer == mSelectedOptionPosition) {
-            score += 1.0F
+        if (prevCorrectAnswer != 0 &&
+            prevCorrectAnswer == mSelectedOptionPosition) {
+            numCorrect += 1
         }
 
         if( mCurrentPosition < mQuestionSize ){
@@ -89,6 +91,8 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             // GO TO NEXT ACTIVITY
             val intent = Intent(this@QuestionActivity, FinalResultActivity::class.java)
+            score = ((100 * numCorrect)/mQuestionSize).toFloat() // parse to percent
+            intent.putExtra("user_name", "aramos")
             intent.putExtra("final_score", score.toString())
             startActivity(intent)
             finish()
