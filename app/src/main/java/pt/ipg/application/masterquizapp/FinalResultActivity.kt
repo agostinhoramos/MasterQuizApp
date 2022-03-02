@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -23,6 +24,10 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
         btnReplay?.setOnClickListener(this)
         btnQuit?.setOnClickListener(this)
 
+        val myIntent = intent
+        val score = myIntent?.getStringExtra("final_score")
+        var tvFinalScore = findViewById<TextView>(R.id.tv_final_score)
+        tvFinalScore.text = "Final Score: $score"
     }
 
     override fun onClick(v: View?) {

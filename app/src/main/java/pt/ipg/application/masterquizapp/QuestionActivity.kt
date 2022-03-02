@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
@@ -13,9 +14,10 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
+
     private var mCurrentPosition: Int = 0
     private var mQuestionList: ArrayList<Question>? = null
-    private var mQuestionSize: Int = 4
+    private var mQuestionSize: Int = 0
     private var mSelectedOptionPosition: Int = 0
     private var progressBar: ProgressBar? = null
 
@@ -26,6 +28,9 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private var tvOptionThree: TextView? = null
     private var tvOptionFour: TextView? = null
     private var tvQuestion: TextView? = null
+
+    private var score: Float = 0.0F
+    private var prevCorrectAnswer: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,23 +52,31 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
         progressBar = findViewById(R.id.progressBar)
 
+        mQuestionSize = Constants.getQuestions().size
         progressBar?.max = mQuestionSize
         mQuestionList = Constants.getQuestions()
-        nextQuestion()
+        nextQuestion() // Display first question at begining
 
         // style option
         defaultOptionsView()
     }
 
     private fun nextQuestion() {
-        mCurrentPosition += 1
 
-        if( mCurrentPosition <= mQuestionSize ) {
+        // Logic - Check if Answer is correct
+        if (prevCorrectAnswer != 0 && prevCorrectAnswer == mSelectedOptionPosition) {
+            score += 1.0F
+        }
+
+        if( mCurrentPosition < mQuestionSize ){
+            mCurrentPosition += 1
+
             val question =
                 mQuestionList!![mCurrentPosition - 1]
 
             progressBar?.progress = mCurrentPosition
-            findViewById<TextView>(R.id.tv_progress).text = "${mCurrentPosition} / ${progressBar?.getMax()}"
+            findViewById<TextView>(R.id.tv_progress).text =
+                "${mCurrentPosition} / ${progressBar?.getMax()}"
 
             tvQuestion?.text = question.question
             tvOptionOne?.text = question.optionOne
@@ -71,9 +84,12 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             tvOptionThree?.text = question.optionThree
             tvOptionFour?.text = question.optionFour
 
-        }else{
+            prevCorrectAnswer = question.correctAnswer
+
+        } else {
             // GO TO NEXT ACTIVITY
             val intent = Intent(this@QuestionActivity, FinalResultActivity::class.java)
+            intent.putExtra("final_score", score.toString())
             startActivity(intent)
             finish()
         }
@@ -113,6 +129,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
         defaultOptionsView()
+
         mSelectedOptionPosition = selectedOptionNum
         tv.setTextColor(
             Color.parseColor("#363A43")
