@@ -1,15 +1,21 @@
 package pt.ipg.application.masterquizapp
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.TaskStackBuilder
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 
 class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
     private var btnReplay: Button? = null
@@ -52,7 +58,15 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
             .text = gameStatus
 
         if(isWinner == true){
+
             // Do something..
+            SocketHandler.setSocket()
+            val mSocket = SocketHandler.getSocket()
+            mSocket.connect()
+
+            // action
+            var obj = "{\"name\": \"$userName\", \"score\": $score}"
+            mSocket.emit("notify", obj)
         }
     }
 
@@ -63,6 +77,7 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
                 finish()
             }
+            //
             R.id.btn_quit -> {
                 val intent = Intent(this@FinalResultActivity, ListActivity::class.java)
                 startActivity(intent)

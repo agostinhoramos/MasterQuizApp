@@ -18,6 +18,8 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
+import pt.ipg.application.masterquizapp.FinalResultActivity
+
 class MainActivity : AppCompatActivity() {
 
     val CHANEL_ID = "channelID"
@@ -42,8 +44,8 @@ class MainActivity : AppCompatActivity() {
         val etName = findViewById<AppCompatEditText>(R.id.et_name)
 
         // this function to call the button
-        val btnStart = findViewById<Button>(R.id.btn_start)
-        btnStart.setOnClickListener {
+        findViewById<Button>(R.id.btn_start)
+            .setOnClickListener {
             // Do some action
             if (etName.text.toString().isEmpty()){
                 Toast.makeText(this@MainActivity, "Please enter your name",
@@ -61,14 +63,10 @@ class MainActivity : AppCompatActivity() {
         val mSocket = SocketHandler.getSocket()
         mSocket.connect()
 
-        // action
-        mSocket.emit("counter")
-
-        mSocket.on("counter"){ args ->
+        mSocket.on("notify"){ args ->
             if (args[0] != null){
-                val counter = args[0] as Int
+                val name = args[0] as String
                 runOnUiThread{
-                    val name = counter.toString()
                     setNotification(name)
                 }
             }
@@ -76,7 +74,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun setNotification(name: String){
+    fun setNotification(name: String){
         val intent = Intent(this, ListActivity::class.java)
         val pendingIntent = TaskStackBuilder.create(this).run {
             addNextIntentWithParentStack(intent)
@@ -96,7 +94,7 @@ class MainActivity : AppCompatActivity() {
             .notify(NOTIFICATION_ID, notification)
     }
 
-    private fun createNotificationChannel(){
+    fun createNotificationChannel(){
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ){
             val channel = NotificationChannel(CHANEL_ID, CHANEL_NAME,
                 NotificationManager.IMPORTANCE_DEFAULT).apply {
