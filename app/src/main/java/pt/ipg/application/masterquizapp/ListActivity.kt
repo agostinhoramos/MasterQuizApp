@@ -21,7 +21,16 @@ class ListActivity : AppCompatActivity() {
 
         layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        adapter = RecyclerAdapter()
+
+        val resultList = ArrayList<Result>()
+        resultList.add(
+            Result("Pedro Lucas", "Final score: 55 %", R.drawable.ukraine_flag)
+        )
+        resultList.add(
+            Result("Carlos Santos", "Final score: 45 %", R.drawable.ukraine_flag)
+        )
+
+        adapter = RecyclerAdapter(this, resultList)
         recyclerView.adapter = adapter
     }
 }

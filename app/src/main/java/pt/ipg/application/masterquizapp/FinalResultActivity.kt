@@ -20,6 +20,7 @@ import androidx.core.app.NotificationManagerCompat
 class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
     private var btnReplay: Button? = null
     private var btnQuit: Button? = null
+    private var userName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +33,7 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
         btnQuit?.setOnClickListener(this)
 
         val myIntent = intent
-        var userName = myIntent?.getStringExtra("user_name")
+        userName = myIntent?.getStringExtra("user_name")
         val score = myIntent?.getStringExtra("final_score")
 
         var gameStatus: String? = null
@@ -74,6 +75,7 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.btn_replay -> {
                 val intent = Intent(this@FinalResultActivity, QuestionActivity::class.java)
+                intent.putExtra("user_name", userName )
                 startActivity(intent)
                 finish()
             }

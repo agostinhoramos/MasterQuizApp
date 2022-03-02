@@ -41,17 +41,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Declare input text 'name'
-        val etName = findViewById<AppCompatEditText>(R.id.et_name)
+        val userName = findViewById<AppCompatEditText>(R.id.et_name)
 
         // this function to call the button
         findViewById<Button>(R.id.btn_start)
             .setOnClickListener {
             // Do some action
-            if (etName.text.toString().isEmpty()){
+            if (userName.text.toString().isEmpty()){
                 Toast.makeText(this@MainActivity, "Please enter your name",
                 Toast.LENGTH_SHORT).show()
             }else {
                 val intent = Intent(this@MainActivity, QuestionActivity::class.java)
+                intent.putExtra("user_name", userName.text.toString() )
                 startActivity(intent)
                 finish()
             }

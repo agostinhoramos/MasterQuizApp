@@ -90,9 +90,13 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
         } else {
             // GO TO NEXT ACTIVITY
+            val myIntent = intent
+            var userName = myIntent?.getStringExtra("user_name")
+
             val intent = Intent(this@QuestionActivity, FinalResultActivity::class.java)
             score = ((100 * numCorrect)/mQuestionSize).toFloat() // parse to percent
-            intent.putExtra("user_name", "aramos")
+
+            intent.putExtra("user_name", userName )
             intent.putExtra("final_score", score.toString())
             startActivity(intent)
             finish()
