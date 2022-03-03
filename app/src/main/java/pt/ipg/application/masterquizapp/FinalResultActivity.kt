@@ -84,7 +84,7 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
         }catch (e: IOException){
             e.printStackTrace()
         }
-        Toast.makeText(this, "Sound", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Ukrainian National Anthem", Toast.LENGTH_SHORT).show()
     }
 
     private fun pauseAudio(){

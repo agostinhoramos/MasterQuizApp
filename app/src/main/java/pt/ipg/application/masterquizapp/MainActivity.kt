@@ -103,7 +103,6 @@ class MainActivity : AppCompatActivity() {
             }
             val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             manager.createNotificationChannel(channel)
-
         }
     }
 
