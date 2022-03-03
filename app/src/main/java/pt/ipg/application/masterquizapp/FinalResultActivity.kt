@@ -1,21 +1,12 @@
 package pt.ipg.application.masterquizapp
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.app.TaskStackBuilder
-import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 
 class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
     private var btnReplay: Button? = null
