@@ -18,8 +18,6 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
-import pt.ipg.application.masterquizapp.FinalResultActivity
-
 class MainActivity : AppCompatActivity() {
 
     val CHANEL_ID = "channelID"
@@ -47,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btn_start)
             .setOnClickListener {
             // Do some action
+
             if (userName.text.toString().isEmpty()){
                 Toast.makeText(this@MainActivity, "Please enter your name",
                 Toast.LENGTH_SHORT).show()
@@ -107,4 +106,5 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
 }

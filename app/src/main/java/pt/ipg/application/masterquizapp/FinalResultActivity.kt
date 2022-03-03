@@ -1,17 +1,25 @@
 package pt.ipg.application.masterquizapp
 
 import android.content.Intent
+import android.media.AudioManager
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import java.io.IOException
 
 class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
     private var btnReplay: Button? = null
     private var btnQuit: Button? = null
     private var userName: String? = null
+
+    // Sounds
+    private var mediaPlayer: MediaPlayer? = null
+    private var isPlaying: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,12 +67,39 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
             // action
             var obj = "{\"name\": \"$userName\", \"score\": $score}"
             mSocket.emit("notify", obj)
+
+            playAudio()
+        }
+    }
+
+    private fun playAudio(){
+        val audioURL = "http://agostinhoramos.ddns.net:55700/static/ua.mp3"
+        mediaPlayer = MediaPlayer()
+        mediaPlayer!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
+        try {
+            mediaPlayer!!.setDataSource(audioURL)
+            mediaPlayer!!.prepare()
+            mediaPlayer!!.start()
+            isPlaying = true
+        }catch (e: IOException){
+            e.printStackTrace()
+        }
+        Toast.makeText(this, "Sound", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun pauseAudio(){
+        if( mediaPlayer!!.isPlaying ){
+            mediaPlayer!!.stop()
+            mediaPlayer!!.reset()
+            mediaPlayer!!.release()
+            isPlaying = false
         }
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_replay -> {
+                if (isPlaying === true) pauseAudio()
                 val intent = Intent(this@FinalResultActivity, QuestionActivity::class.java)
                 intent.putExtra("user_name", userName )
                 startActivity(intent)
@@ -72,6 +107,7 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
             }
             //
             R.id.btn_quit -> {
+                if (isPlaying === true) pauseAudio()
                 val intent = Intent(this@FinalResultActivity, ListActivity::class.java)
                 startActivity(intent)
                 finish()

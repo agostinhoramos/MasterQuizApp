@@ -24,7 +24,7 @@ class ListActivity : AppCompatActivity() {
         layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
 
-        val resultList = ArrayList<Result>()
+        var resultList = ArrayList<Result>()
 
         SocketHandler.setSocket()
         val mSocket = SocketHandler.getSocket()
@@ -38,8 +38,9 @@ class ListActivity : AppCompatActivity() {
             if (args[0] != null){
                 val strObj = args[0] as String
                 runOnUiThread{
-
+                    resultList = ArrayList<Result>()
                     var jsonArray = JSONArray(strObj)
+
                     for(i in 0 until jsonArray.length()){
 
                         // Covert json object
