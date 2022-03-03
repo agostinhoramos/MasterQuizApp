@@ -249,11 +249,7 @@ class ContentProviderQuiz : ContentProvider() {
 
         val bd = bdOpenHelper!!.writableDatabase
 
-        val id = uri.lastPathSegment?.toLongOrNull()
-
-        if (id == null) {
-            return 0
-        }
+        val id = uri.lastPathSegment?.toLongOrNull() ?: return 0
 
         return when(uriMatcher().match(uri)) {
             URI_USER_ID -> TableUsers(bd).update(id, values)
