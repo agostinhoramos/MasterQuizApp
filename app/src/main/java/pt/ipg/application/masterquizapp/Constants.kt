@@ -1,5 +1,7 @@
 package pt.ipg.application.masterquizapp
 
+import pt.ipg.application.masterquizapp.`object`.Question
+
 object Constants {
     fun getQuestions(): ArrayList<Question>{
         val questionList = ArrayList<Question>()

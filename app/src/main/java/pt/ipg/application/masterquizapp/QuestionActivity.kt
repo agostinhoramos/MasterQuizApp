@@ -5,13 +5,13 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import pt.ipg.application.masterquizapp.`object`.Question
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 

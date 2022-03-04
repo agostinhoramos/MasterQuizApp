@@ -1,4 +1,4 @@
-package pt.ipg.application.masterquizapp
+package pt.ipg.application.masterquizapp.`object`
 
 data class Result (
     val title: String,

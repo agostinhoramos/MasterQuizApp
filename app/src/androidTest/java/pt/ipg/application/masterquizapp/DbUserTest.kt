@@ -7,6 +7,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.Assert.*
 import org.junit.Before
+import pt.ipg.application.masterquizapp.database.`object`.User
+import pt.ipg.application.masterquizapp.database.DBTable
+import pt.ipg.application.masterquizapp.database.QuizDBOpenHelper
+import pt.ipg.application.masterquizapp.database.table.UsersTable
 
 @RunWith(AndroidJUnit4::class)
 class DbUserTest {

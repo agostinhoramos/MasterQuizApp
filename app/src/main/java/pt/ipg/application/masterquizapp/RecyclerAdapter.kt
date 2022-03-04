@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import pt.ipg.application.masterquizapp.`object`.Result
 
 class RecyclerAdapter(val context: Context, var resultList: ArrayList<Result>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 

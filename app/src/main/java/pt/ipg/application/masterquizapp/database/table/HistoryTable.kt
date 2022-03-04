@@ -1,10 +1,11 @@
-package pt.ipg.application.masterquizapp
+package pt.ipg.application.masterquizapp.database.table
 
 import android.database.sqlite.SQLiteDatabase
+import pt.ipg.application.masterquizapp.database.DBTable
 
 class HistoryTable(db : SQLiteDatabase) : DBTable(db, TABLE_NAME) {
     fun create() {
-        db.execSQL("CREATE TABLE $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_FK_USER TEXT NOT NULL, $COLUMN_DATE TEXT NOT NULL, $COLUMN_LEVEL TEXT NOT NULL)")
+        db.execSQL("CREATE TABLE $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_FK_USER INTEGER NOT NULL, $COLUMN_DATE TEXT NOT NULL, $COLUMN_LEVEL TEXT NOT NULL)")
     }
 
     companion object {

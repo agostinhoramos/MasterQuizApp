@@ -1,6 +1,7 @@
-package pt.ipg.application.masterquizapp
+package pt.ipg.application.masterquizapp.database.table
 
 import android.database.sqlite.SQLiteDatabase
+import pt.ipg.application.masterquizapp.database.DBTable
 
 class UsersTable(db : SQLiteDatabase) : DBTable(db, TABLE_NAME) {
     fun create() {

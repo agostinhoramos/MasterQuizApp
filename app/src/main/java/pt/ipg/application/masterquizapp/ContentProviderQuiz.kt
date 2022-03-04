@@ -5,6 +5,9 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
+import pt.ipg.application.masterquizapp.database.DBTable
+import pt.ipg.application.masterquizapp.database.QuizDBOpenHelper
+import pt.ipg.application.masterquizapp.database.table.UsersTable
 
 class ContentProviderQuiz : ContentProvider() {
     private var bdOpenHelper : QuizDBOpenHelper? = null

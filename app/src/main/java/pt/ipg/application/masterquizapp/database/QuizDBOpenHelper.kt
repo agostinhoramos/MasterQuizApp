@@ -1,8 +1,9 @@
-package pt.ipg.application.masterquizapp
+package pt.ipg.application.masterquizapp.database
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import pt.ipg.application.masterquizapp.database.table.UsersTable
 
 class QuizDBOpenHelper(context: Context?)
     : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {

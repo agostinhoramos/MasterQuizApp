@@ -1,8 +1,10 @@
-package pt.ipg.application.masterquizapp
+package pt.ipg.application.masterquizapp.database.`object`
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.database.Cursor
+import pt.ipg.application.masterquizapp.database.DBTable
+import pt.ipg.application.masterquizapp.database.table.UsersTable
 
 data class User(var name: String, var country: String, var created_at: String, var id: Long = -1) {
     fun toContentValues() : ContentValues {

@@ -1,11 +1,11 @@
 package pt.ipg.application.masterquizapp
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.json.JSONArray
+import pt.ipg.application.masterquizapp.`object`.Result
 
 class ListActivity : AppCompatActivity() {
 

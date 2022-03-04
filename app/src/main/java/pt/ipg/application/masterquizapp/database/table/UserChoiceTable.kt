@@ -1,10 +1,11 @@
-package pt.ipg.application.masterquizapp
+package pt.ipg.application.masterquizapp.database.table
 
 import android.database.sqlite.SQLiteDatabase
+import pt.ipg.application.masterquizapp.database.DBTable
 
 class UserChoiceTable(db : SQLiteDatabase) : DBTable(db, TABLE_NAME) {
     fun create() {
-        db.execSQL("CREATE TABLE $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_FK_USER INTEGER NOT NULL, $COLUMN_FK_CHOICE INTEGER )")
+        db.execSQL("CREATE TABLE $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_FK_USER INTEGER NOT NULL, $COLUMN_FK_CHOICE INTEGER NOT NULL)")
     }
 
     companion object {
