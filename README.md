@@ -43,6 +43,15 @@ In this github repository, you can see step by step the development of a quiz ap
     <li>User Location</li>
 </ul>
 
+### Screenshots
+
+<p align="center">
+	<img src="document/Screenshot_20220304_053247.png?raw=true" width="20%" />
+	<img src="document/Screenshot_20220304_053205.png?raw=true" width="20%" />
+	<img src="document/Screenshot_20220304_053441.png?raw=true" width="20%" />
+	<img src="document/Screenshot_20220304_053508.png?raw=true" width="20%" />
+</p>
+
 ### TODO
 - Fragments
 
