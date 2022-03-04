@@ -17,16 +17,16 @@ class DbUserTest {
         return bdOpenHelper.writableDatabase
     }
 
-    private fun insertUser(tableUsers: TableUsers, user: User) : Long {
+    private fun insertUser(tableUsers: UsersTable, user: User) : Long {
         val id = tableUsers.insert(user.toContentValues())
         assertNotEquals(-1, id)
         return id
     }
 
-    private fun getUserDatabase(tableUsers: TableUsers, id: Long): User {
+    private fun getUserDatabase(tableUsers: UsersTable, id: Long): User {
         val cursor = tableUsers.query(
-            TableUsers.ALL_COLUMNS,
-            "${TableUsers.TABLE_NAME}.${TableDB.COLUMN_ID}=?",
+            UsersTable.ALL_COLUMNS,
+            "${UsersTable.TABLE_NAME}.${DBTable.COLUMN_ID}=?",
             arrayOf("$id"),
             null,
             null,
@@ -55,14 +55,14 @@ class DbUserTest {
     @Test
     fun canInsertUser() {
         val db = getWritableDatabase()
-        insertUser(TableUsers(db), User("Paulo Marques", "Portugal", "04-02-2021 20:12"))
+        insertUser(UsersTable(db), User("Paulo Marques", "Portugal", "04-02-2021 20:12"))
         db.close()
     }
 
     @Test
     fun canDeleteUser() {
         val db = getWritableDatabase()
-        val tableUsers = TableUsers(db)
+        val tableUsers = UsersTable(db)
 
         val id = insertUser(tableUsers, User("Anonymous", "United States of America", "00-00-0000 00:00"))
         val numRecordsDeleted = tableUsers.delete(id)
@@ -74,7 +74,7 @@ class DbUserTest {
     @Test
     fun canUpdateUser() {
         val db = getWritableDatabase()
-        val tableUsers = TableUsers(db)
+        val tableUsers = UsersTable(db)
 
         val user = User("Anonymous", "United States of America", "00-00-0000 00:00")
         user.id = insertUser(tableUsers, user)
@@ -89,7 +89,7 @@ class DbUserTest {
     @Test
     fun canReadUser() {
         val db = getWritableDatabase()
-        val tableUsers = TableUsers(db)
+        val tableUsers = UsersTable(db)
 
         val user = User("Anonymous", "United States of America", "00-00-0000 00:00")
         user.id = insertUser(tableUsers, user)

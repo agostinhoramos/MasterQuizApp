@@ -120,8 +120,8 @@ class ContentProviderQuiz : ContentProvider() {
         val id = uri.lastPathSegment!!
 
         return when(uriMatcher().match(uri)) {
-            URI_USERS -> TableUsers(bd).query(columns, selection, selectionArgs as Array<String>?, null, null,  sortOrder)
-            URI_USER_ID -> TableUsers(bd).query(columns, "${TableUsers.TABLE_NAME}.${TableDB.COLUMN_ID}=?", arrayOf(id), null, null, null)
+            URI_USERS -> UsersTable(bd).query(columns, selection, selectionArgs as Array<String>?, null, null,  sortOrder)
+            URI_USER_ID -> UsersTable(bd).query(columns, "${UsersTable.TABLE_NAME}.${DBTable.COLUMN_ID}=?", arrayOf(id), null, null, null)
             else -> null
         }
     }
@@ -173,7 +173,7 @@ class ContentProviderQuiz : ContentProvider() {
         }
 
         val id = when(uriMatcher().match(uri)) {
-            URI_USERS -> TableUsers(bd).insert(values)
+            URI_USERS -> UsersTable(bd).insert(values)
             else -> -1L
         }
 
@@ -213,7 +213,7 @@ class ContentProviderQuiz : ContentProvider() {
         val id = uri.lastPathSegment?.toLongOrNull() ?: return 0
 
         return when(uriMatcher().match(uri)) {
-            URI_USER_ID -> TableUsers(bd).delete(id)
+            URI_USER_ID -> UsersTable(bd).delete(id)
             else -> 0
         }
     }
@@ -248,7 +248,7 @@ class ContentProviderQuiz : ContentProvider() {
         val id = uri.lastPathSegment?.toLongOrNull() ?: return 0
 
         return when(uriMatcher().match(uri)) {
-            URI_USER_ID -> TableUsers(bd).update(id, values)
+            URI_USER_ID -> UsersTable(bd).update(id, values)
             else -> 0
         }
     }

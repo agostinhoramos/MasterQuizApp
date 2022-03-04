@@ -4,7 +4,7 @@ import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 
-open class TableDB(db : SQLiteDatabase, tableName: String) {
+open class DBTable(db : SQLiteDatabase, tableName: String) {
     protected val db = db
     protected val tableName = tableName
 

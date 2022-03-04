@@ -1,10 +1,8 @@
 package pt.ipg.application.masterquizapp
 
-import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
-import android.provider.BaseColumns
 
-class TableUserChoice(db : SQLiteDatabase) : TableDB(db, TABLE_NAME) {
+class UserChoiceTable(db : SQLiteDatabase) : DBTable(db, TABLE_NAME) {
     fun create() {
         db.execSQL("CREATE TABLE $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_FK_USER INTEGER NOT NULL, $COLUMN_FK_CHOICE INTEGER )")
     }

@@ -13,7 +13,7 @@ class QuizDBOpenHelper(context: Context?)
      * @param db The database.
      */
     override fun onCreate(db: SQLiteDatabase?) {
-        TableUsers(db!!).create()
+        UsersTable(db!!).create()
     }
 
     /**
