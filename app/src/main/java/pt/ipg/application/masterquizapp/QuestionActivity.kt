@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import pt.ipg.application.masterquizapp.`object`.Question
+import pt.ipg.application.masterquizapp.data.Constants
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
