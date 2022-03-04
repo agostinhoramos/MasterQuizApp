@@ -1,4 +1,4 @@
-# Master Quiz App
+# Master Quiz Application
 ## Quiz: Conflict in Ukraine <img src="https://images.emojiterra.com/google/noto-emoji/v2.028/128px/1f1fa-1f1e6.png" width="23px" height="23px">
 
 The evolution of today's mobile devices increases the number of mobile applications developed and among them the quiz applications. Android Mobile hardware and software platforms allow the running of faster and richer applications.
