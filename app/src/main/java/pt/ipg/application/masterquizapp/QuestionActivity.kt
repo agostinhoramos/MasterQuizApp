@@ -79,7 +79,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
             progressBar?.progress = mCurrentPosition
             findViewById<TextView>(R.id.tv_progress).text =
-                "${mCurrentPosition} / ${progressBar?.getMax()}"
+                getString(R.string.position_progress_bar, mCurrentPosition, progressBar?.max)
 
             tvQuestion?.text = question.question
             tvOptionOne?.text = question.optionOne
@@ -104,9 +104,9 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         if (mCurrentPosition == mQuestionSize){
-            btnSubmit?.text = "FINISH"
+            btnSubmit?.text = getString(R.string.finish)
         }else{
-            btnSubmit?.text = "SUBMIT"
+            btnSubmit?.text = getString(R.string.submit)
         }
     }
 
@@ -130,7 +130,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     nextQuestion()
                     defaultOptionsView()
                 }else{
-                    Toast.makeText(this, "Please, select one option", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.please_select_one_option), Toast.LENGTH_SHORT).show()
                 }
             }
         }

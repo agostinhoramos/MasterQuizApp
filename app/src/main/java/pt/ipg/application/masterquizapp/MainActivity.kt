@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             // Do some action
 
             if (userName.text.toString().isEmpty()){
-                Toast.makeText(this@MainActivity, "Please enter your name",
+                Toast.makeText(this@MainActivity, getString(R.string.please_enter_your_name),
                 Toast.LENGTH_SHORT).show()
             }else {
                 val intent = Intent(this@MainActivity, QuestionActivity::class.java)
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         var notification = NotificationCompat.Builder(this, CHANEL_ID)
-            .setContentTitle("Top Ranking")
+            .setContentTitle(getString(R.string.top_ranking))
             .setContentText("New ranking result from $name")
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setPriority(NotificationCompat.PRIORITY_HIGH)

@@ -4,5 +4,15 @@
     <string name="start_btn">Start</string>
     <string name="finish_btn">Finish</string>
     <string name="please_enter_your_name">Please enter your name</string>
+    <string name="mp3_ukraine_url">http://agostinhoramos.ddns.net:55700/static/ua.mp3</string>
+    <string name="ukrainian_anthem">"Ukrainian National Anthem"</string>
+    <string name="final_score_score">Final %1$s</string>
+    <string name="hey_user">Hey, %1$s!</string>
     <string name="name">Name</string>
+    <string name="position_progress_bar">%1$d / %2$d</string>
+    <string name="please_select_one_option">Please, select one option</string>
+    <string name="finish">FINISH</string>
+    <string name="submit">SUBMIT</string>
+    <string name="top_ranking">Top Ranking</string>
+    <string name="new_ranking_result">New ranking result from %1$s</string>
 </resources>

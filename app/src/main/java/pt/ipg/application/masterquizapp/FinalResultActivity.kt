@@ -51,9 +51,9 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         findViewById<TextView>(R.id.tv_final_score)
-            .text = "Final Score: $score%"
+            .text = getString(R.string.final_score_score, score)
         findViewById<TextView>(R.id.tv_player_name)
-            .text = "Hey, $userName!"
+            .text = getString(R.string.hey_user, userName)
         findViewById<TextView>(R.id.tv_game_status)
             .text = gameStatus
 
@@ -73,7 +73,7 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun playAudio(){
-        val audioURL = "http://agostinhoramos.ddns.net:55700/static/ua.mp3"
+        val audioURL = getString(R.string.mp3_ukraine_url)
         mediaPlayer = MediaPlayer()
         mediaPlayer!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
         try {
@@ -84,7 +84,7 @@ class FinalResultActivity : AppCompatActivity(), View.OnClickListener {
         }catch (e: IOException){
             e.printStackTrace()
         }
-        Toast.makeText(this, "Ukrainian National Anthem", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.ukrainian_anthem), Toast.LENGTH_SHORT).show()
     }
 
     private fun pauseAudio(){
