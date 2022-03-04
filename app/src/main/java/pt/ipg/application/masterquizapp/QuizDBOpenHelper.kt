@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 class QuizDBOpenHelper(context: Context?)
-    : SQLiteOpenHelper(context, NOME_BASE_DADOS, null, VERSAO_BASE_DADOS) {
+    : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     /**
      * Called when the database is created for the first time. This is where the
      * creation of tables and the initial population of the tables should happen.
@@ -43,7 +43,7 @@ class QuizDBOpenHelper(context: Context?)
     }
 
     companion object {
-        const val NOME_BASE_DADOS = "master_quiz.db"
-        const val VERSAO_BASE_DADOS = 1
+        const val DATABASE_NAME = "master_quiz.db"
+        const val DATABASE_VERSION = 1
     }
 }

@@ -210,11 +210,7 @@ class ContentProviderQuiz : ContentProvider() {
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
         val bd = bdOpenHelper!!.writableDatabase
 
-        val id = uri.lastPathSegment?.toLongOrNull()
-
-        if (id == null) {
-            return 0
-        }
+        val id = uri.lastPathSegment?.toLongOrNull() ?: return 0
 
         return when(uriMatcher().match(uri)) {
             URI_USER_ID -> TableUsers(bd).delete(id)
